@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonList, IonListHeader, IonLabel, IonItem, IonNote } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CounterComponent } from '../components/counter/counter.component';
 import { SavedCounter } from '../models/saved-counter';
+import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,18 +11,15 @@ import { SavedCounter } from '../models/saved-counter';
   styleUrls: ['tab1.page.scss'],
   imports: [
     CounterComponent,
-    IonHeader, IonToolbar, IonTitle, IonContent, FormsModule,
-    IonList,
-    IonListHeader,
-    IonLabel,
-    IonItem,
-    IonNote
+    IonHeader, IonToolbar, IonTitle, IonContent, FormsModule
 ],
 })
 
 export class Tab1Page {
-  savedCounters: SavedCounter[] = [];
+
+  private readonly countryService = inject(CounterService);
+  
   onSaved(counter: SavedCounter): void {  
-    this.savedCounters.unshift(counter);
+    this.countryService.add(counter);
   }
 }

@@ -17,21 +17,4 @@ describe('Tab1Page', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should add the newest saved counter to the beginning', () => {
-    const first: SavedCounter = {
-      id: 'first',
-      name: 'První',
-      value: 1,
-    };
-    const second: SavedCounter = {
-      id: 'second',
-      name: 'Druhé',
-      value: 2,
-    };
-
-    component.onSaved(first);
-    component.onSaved(second);
-
-    expect(component.savedCounters).toEqual([second, first]);
-  });
 });
