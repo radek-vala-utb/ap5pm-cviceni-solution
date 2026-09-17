@@ -17,7 +17,10 @@ export class Tab1Page {
   }
 
   decrement() {
-    this.count--;
+    if(this.count > 0){
+      this.count--;
+    }
+    
   }
 
   reset() {
