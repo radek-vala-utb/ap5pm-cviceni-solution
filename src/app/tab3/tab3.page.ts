@@ -59,6 +59,7 @@ export class Tab3Page {
   });
 
   async ionViewWillEnter(): Promise<void> {
+    console.log('Tab3Page: ionViewWillEnter');
     await this.loadHolidays();
   }
 
